@@ -1,0 +1,16 @@
+version: '3.8'
+name: go-web
+services:
+  mysql:
+    image: mysql:8.0.35
+    container_name: go-web-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/logs:/logs
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
