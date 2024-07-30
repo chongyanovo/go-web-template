@@ -1,7 +1,7 @@
 package bootstrap
 
 import (
-	"github.com/ChongYanOvO/blog/server/bootstrap/internal"
+	"github.com/ChongYanOvO/go-web-template/bootstrap/internal"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"

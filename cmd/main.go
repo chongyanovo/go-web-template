@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ChongYanOvO/blog/server/bootstrap"
+	"github.com/ChongYanOvO/go-web-template/bootstrap"
 	"github.com/gin-gonic/gin"
 )
 
