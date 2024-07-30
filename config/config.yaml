@@ -7,10 +7,10 @@ mysql:
   port: 3306
   username: root
   password: 123456
-  database: blog
+  database: go_web
 zap:
   level: info
-  prefix: "[chongyan-blog] "
+  prefix: "[golang] "
   format: console
   director: logs
   encode-level: LowercaseColorLevelEncoder
