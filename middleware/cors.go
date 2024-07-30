@@ -9,7 +9,6 @@ import (
 // Cors 跨域配置
 func Cors() gin.HandlerFunc {
 	return cors.New(cors.Config{
-		AllowOrigins: []string{"*"},
 		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"},
 		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
 		AllowOriginFunc: func(origin string) bool {
@@ -21,5 +20,4 @@ func Cors() gin.HandlerFunc {
 		AllowCredentials: true, // 允许带cookie跨域
 		MaxAge:           12 * 3600,
 	})
-
 }

@@ -10,7 +10,7 @@ import (
 func main() {
 	app := bootstrap.InitApp()
 	config := app.Config
-	gin := gin.Default()
-	gin.Use(middleware.Cors())
-	gin.Run(fmt.Sprintf("%v:%v", config.Server.Host, config.Server.Port))
+	engine := gin.Default()
+	engine.Use(middleware.Cors())
+	engine.Run(fmt.Sprintf("%v:%v", config.Server.Host, config.Server.Port))
 }
