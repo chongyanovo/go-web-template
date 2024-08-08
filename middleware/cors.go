@@ -9,8 +9,9 @@ import (
 // Cors 跨域配置
 func Cors() gin.HandlerFunc {
 	return cors.New(cors.Config{
-		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"},
-		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		AllowMethods:  []string{"GET", "POST", "PUT", "P ATCH", "DELETE", "HEAD", "OPTIONS"},
+		AllowHeaders:  []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		ExposeHeaders: []string{"Content-Length", "Content-Type", "x-jwt-token"},
 		AllowOriginFunc: func(origin string) bool {
 			if strings.Contains(origin, "localhost") {
 				return true

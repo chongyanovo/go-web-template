@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-mysql
+  labels:
+    app: go-web-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-mysql
+  template:
+    metadata:
+      name: go-web-mysql
+      labels:
+        app: go-web-mysql
+    spec:
+      containers:
+        - name: go-web-mysql
+          image: mysql:8.0.35
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "123456"
+#          volumeMounts:
+#            - mountPath: /var/lib/mysql
+#              name: mysql-storage
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-redis
+  labels:
+    app: go-web-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-redis
+  template:
+    metadata:
+      name: go-web-redis
+      labels:
+        app: go-web-redis
+    spec:
+      containers:
+        - name: go-web-redis
+          image: redis:7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-app
+  labels:
+    app: go-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-app
+  template:
+    metadata:
+      name: go-web-app
+      labels:
+        app: go-web-app
+    spec:
+      containers:
+        - name: go-web-app
+          image: chongyan/go-web-app:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8088
+              protocol: TCP
+      restartPolicy: Always

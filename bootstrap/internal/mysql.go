@@ -27,5 +27,5 @@ func NewMysql(m *Mysql) *gorm.DB {
 	if err != nil {
 		panic(fmt.Sprintf("Mysql创建失败: %v", err))
 	}
-	return db
+	return db.Debug()
 }
